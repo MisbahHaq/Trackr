@@ -17,4 +17,12 @@ class AppWidget {
       fontWeight: FontWeight.w500,
     );
   }
+
+  static TextStyle WhiteTextFieldStyle() {
+    return TextStyle(
+      color: Colors.white,
+      fontSize: 24.0,
+      fontWeight: FontWeight.bold,
+    );
+  }
 }
