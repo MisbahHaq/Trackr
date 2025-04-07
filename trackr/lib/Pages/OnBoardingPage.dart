@@ -22,7 +22,7 @@ class _OnBoardingState extends State<OnBoarding> {
             Text(
               "Track your parcel\nfrom anywhere",
               textAlign: TextAlign.center,
-              style: AppWidget.HeadLineTextFieldStyle(),
+              style: AppWidget.HeadLineTextFieldStyle(30.0),
             ),
             SizedBox(height: 30.0),
             Text(
