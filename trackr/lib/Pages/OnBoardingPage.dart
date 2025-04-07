@@ -29,6 +29,11 @@ class _OnBoardingState extends State<OnBoarding> {
               "Check the progress of your deliveries",
               style: AppWidget.SimpleTextFieldStyle(),
             ),
+            Container(
+              width: MediaQuery.of(context).size.width / 2,
+              height: 50,
+              decoration: BoxDecoration(color: Color(0xfff8ae39)),
+            ),
           ],
         ),
       ),
