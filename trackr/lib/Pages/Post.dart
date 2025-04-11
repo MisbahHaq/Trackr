@@ -23,6 +23,38 @@ class _PostPageState extends State<PostPage> {
                 style: AppWidget.WhiteTextFieldStyle(),
               ),
             ),
+            SizedBox(height: 20.0),
+            Expanded(
+              child: Container(
+                padding: EdgeInsets.only(left: 20.0),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(30),
+                    topRight: Radius.circular(30),
+                  ),
+                ),
+                width: MediaQuery.of(context).size.width,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Center(
+                      child: Image.asset(
+                        "images/delivery-truck.png",
+                        height: 180,
+                        width: 180,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    SizedBox(height: 20.0),
+                    Text(
+                      "Add Location",
+                      style: AppWidget.HeadLineTextFieldStyle(22.0),
+                    ),
+                  ],
+                ),
+              ),
+            ),
           ],
         ),
       ),
