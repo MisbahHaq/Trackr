@@ -109,21 +109,80 @@ class _PostPageState extends State<PostPage> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 20.0),
+                    SizedBox(height: 40.0),
                     Container(
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
                             "PickUp Details",
                             style: AppWidget.NormalLineTextFieldStyle(24.0),
                           ),
+                          SizedBox(height: 10.0),
                           Row(
                             children: [
                               Icon(
                                 Icons.location_on_rounded,
                                 color: Color(0xff6053f8),
+                                size: 30.0,
                               ),
-                              TextField(),
+                              SizedBox(width: 10.0),
+                              Expanded(
+                                child: TextField(
+                                  decoration: InputDecoration(
+                                    hintText: "Enter PickUp Address",
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Colors.black26,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Icon(
+                                Icons.person_2_rounded,
+                                color: Color(0xff6053f8),
+                                size: 30.0,
+                              ),
+                              SizedBox(width: 10.0),
+                              Expanded(
+                                child: TextField(
+                                  decoration: InputDecoration(
+                                    hintText: "Enter PickUp Address",
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Colors.black26,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Icon(
+                                Icons.phone_android_rounded,
+                                color: Color(0xff6053f8),
+                                size: 30.0,
+                              ),
+                              SizedBox(width: 10.0),
+                              Expanded(
+                                child: TextField(
+                                  decoration: InputDecoration(
+                                    hintText: "Enter Phone Number",
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Colors.black26,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
                             ],
                           ),
                         ],
