@@ -18,6 +18,14 @@ class AppWidget {
     );
   }
 
+  static TextStyle SlowSimpleTextFieldStyle() {
+    return TextStyle(
+      color: Colors.black38,
+      fontSize: 16.0,
+      fontWeight: FontWeight.w500,
+    );
+  }
+
   static TextStyle WhiteTextFieldStyle() {
     return TextStyle(
       color: Colors.white,
