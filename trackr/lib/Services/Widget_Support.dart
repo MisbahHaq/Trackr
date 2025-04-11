@@ -34,10 +34,10 @@ class AppWidget {
     );
   }
 
-  static TextStyle WhiteTextFieldStyle() {
+  static TextStyle WhiteTextFieldStyle(double textsize) {
     return TextStyle(
       color: Colors.white,
-      fontSize: 24.0,
+      fontSize: textsize,
       fontWeight: FontWeight.bold,
     );
   }

@@ -59,7 +59,7 @@ class _HomePageState extends State<HomePage> {
                     SizedBox(height: 30.0),
                     Text(
                       "Track your Shipment",
-                      style: AppWidget.WhiteTextFieldStyle(),
+                      style: AppWidget.WhiteTextFieldStyle(22.0),
                     ),
                     SizedBox(height: 5.0),
                     Text(

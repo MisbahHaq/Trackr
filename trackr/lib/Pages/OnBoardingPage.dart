@@ -43,7 +43,7 @@ class _OnBoardingState extends State<OnBoarding> {
                 child: Center(
                   child: Text(
                     "Track Now",
-                    style: AppWidget.WhiteTextFieldStyle(),
+                    style: AppWidget.WhiteTextFieldStyle(18.0),
                   ),
                 ),
               ),

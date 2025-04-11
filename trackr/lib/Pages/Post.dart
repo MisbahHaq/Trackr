@@ -20,10 +20,10 @@ class _PostPageState extends State<PostPage> {
             Center(
               child: Text(
                 "Add Package",
-                style: AppWidget.WhiteTextFieldStyle(),
+                style: AppWidget.WhiteTextFieldStyle(25.0),
               ),
             ),
-            SizedBox(height: 20.0),
+            SizedBox(height: 30.0),
             Expanded(
               child: Container(
                 padding: EdgeInsets.only(left: 20.0),
@@ -38,6 +38,7 @@ class _PostPageState extends State<PostPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    SizedBox(height: 20.0),
                     Center(
                       child: Image.asset(
                         "images/delivery-truck.png",
@@ -91,9 +92,42 @@ class _PostPageState extends State<PostPage> {
                         ),
                       ),
                     ),
+                    SizedBox(height: 30.0),
+                    Center(
+                      child: Container(
+                        height: 60,
+                        width: MediaQuery.of(context).size.width / 1.9,
+                        decoration: BoxDecoration(
+                          color: Color(0xff6053f8),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Center(
+                          child: Text(
+                            "Submit Location",
+                            style: AppWidget.WhiteTextFieldStyle(19.0),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 20.0),
                     Container(
-                      width: MediaQuery.of(context).size.width / 1.6,
-                      decoration: BoxDecoration(color: Color(0xff6053f8)),
+                      child: Column(
+                        children: [
+                          Text(
+                            "PickUp Details",
+                            style: AppWidget.NormalLineTextFieldStyle(24.0),
+                          ),
+                          Row(
+                            children: [
+                              Icon(
+                                Icons.location_on_rounded,
+                                color: Color(0xff6053f8),
+                              ),
+                              TextField(),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
