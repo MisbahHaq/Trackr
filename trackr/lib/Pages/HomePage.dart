@@ -14,7 +14,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
-          margin: EdgeInsets.only(top: 40.0),
+          margin: EdgeInsets.only(top: 50.0),
           child: Column(
             children: [
               Row(
@@ -102,7 +102,12 @@ class _HomePageState extends State<HomePage> {
                   elevation: 2,
                   borderRadius: BorderRadius.circular(30),
                   child: Container(
-                    padding: EdgeInsets.only(left: 10.0),
+                    padding: EdgeInsets.only(
+                      left: 10.0,
+                      top: 10.0,
+                      bottom: 10.0,
+                      right: 10.0,
+                    ),
                     width: MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
                       color: Colors.white,
@@ -122,7 +127,7 @@ class _HomePageState extends State<HomePage> {
                           children: [
                             Text(
                               "Order a delivery",
-                              style: AppWidget.HeadLineTextFieldStyle(22),
+                              style: AppWidget.HeadLineTextFieldStyle(20),
                             ),
                             SizedBox(height: 5.0),
                             Container(
@@ -147,7 +152,12 @@ class _HomePageState extends State<HomePage> {
                   elevation: 2,
                   borderRadius: BorderRadius.circular(30),
                   child: Container(
-                    padding: EdgeInsets.only(left: 10.0),
+                    padding: EdgeInsets.only(
+                      left: 10.0,
+                      top: 10.0,
+                      bottom: 10.0,
+                      right: 10.0,
+                    ),
                     width: MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
                       color: Colors.white,
@@ -167,7 +177,7 @@ class _HomePageState extends State<HomePage> {
                           children: [
                             Text(
                               "Track a delivery",
-                              style: AppWidget.HeadLineTextFieldStyle(22),
+                              style: AppWidget.HeadLineTextFieldStyle(20),
                             ),
                             SizedBox(height: 5.0),
                             Container(
@@ -192,6 +202,12 @@ class _HomePageState extends State<HomePage> {
                   elevation: 2,
                   borderRadius: BorderRadius.circular(30),
                   child: Container(
+                    padding: EdgeInsets.only(
+                      left: 10.0,
+                      top: 10.0,
+                      bottom: 10.0,
+                      right: 10.0,
+                    ),
                     width: MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
                       color: Colors.white,
@@ -211,7 +227,7 @@ class _HomePageState extends State<HomePage> {
                           children: [
                             Text(
                               "Check delivery history",
-                              style: AppWidget.HeadLineTextFieldStyle(22),
+                              style: AppWidget.HeadLineTextFieldStyle(20),
                             ),
                             SizedBox(height: 5.0),
                             Container(
