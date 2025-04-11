@@ -10,6 +10,14 @@ class AppWidget {
     );
   }
 
+  static TextStyle NormalLineTextFieldStyle(double textsize) {
+    return TextStyle(
+      color: Colors.black,
+      fontSize: textsize,
+      fontWeight: FontWeight.w500,
+    );
+  }
+
   static TextStyle SimpleTextFieldStyle() {
     return TextStyle(
       color: Colors.black38,

@@ -51,6 +51,50 @@ class _PostPageState extends State<PostPage> {
                       "Add Location",
                       style: AppWidget.HeadLineTextFieldStyle(22.0),
                     ),
+                    SizedBox(height: 20.0),
+                    Text(
+                      "Pick Up",
+                      style: AppWidget.NormalLineTextFieldStyle(18.0),
+                    ),
+                    SizedBox(height: 5.0),
+                    Container(
+                      padding: EdgeInsets.only(left: 10.0),
+                      margin: EdgeInsets.only(right: 20.0),
+                      decoration: BoxDecoration(
+                        color: Color(0xffececf8),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintText: "Enter Pickup Location",
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 20.0),
+                    Text(
+                      "Drop Off",
+                      style: AppWidget.NormalLineTextFieldStyle(18.0),
+                    ),
+                    SizedBox(height: 5.0),
+                    Container(
+                      padding: EdgeInsets.only(left: 10.0),
+                      margin: EdgeInsets.only(right: 20.0),
+                      decoration: BoxDecoration(
+                        color: Color(0xffececf8),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintText: "Enter fropoff Location",
+                        ),
+                      ),
+                    ),
+                    Container(
+                      width: MediaQuery.of(context).size.width / 1.6,
+                      decoration: BoxDecoration(color: Color(0xff6053f8)),
+                    ),
                   ],
                 ),
               ),
