@@ -35,160 +35,270 @@ class _PostPageState extends State<PostPage> {
                   ),
                 ),
                 width: MediaQuery.of(context).size.width,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(height: 20.0),
-                    Center(
-                      child: Image.asset(
-                        "images/delivery-truck.png",
-                        height: 180,
-                        width: 180,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    SizedBox(height: 20.0),
-                    Text(
-                      "Add Location",
-                      style: AppWidget.HeadLineTextFieldStyle(22.0),
-                    ),
-                    SizedBox(height: 20.0),
-                    Text(
-                      "Pick Up",
-                      style: AppWidget.NormalLineTextFieldStyle(18.0),
-                    ),
-                    SizedBox(height: 5.0),
-                    Container(
-                      padding: EdgeInsets.only(left: 10.0),
-                      margin: EdgeInsets.only(right: 20.0),
-                      decoration: BoxDecoration(
-                        color: Color(0xffececf8),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: TextField(
-                        decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintText: "Enter Pickup Location",
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(height: 20.0),
+                      Center(
+                        child: Image.asset(
+                          "images/delivery-truck.png",
+                          height: 180,
+                          width: 180,
+                          fit: BoxFit.cover,
                         ),
                       ),
-                    ),
-                    SizedBox(height: 20.0),
-                    Text(
-                      "Drop Off",
-                      style: AppWidget.NormalLineTextFieldStyle(18.0),
-                    ),
-                    SizedBox(height: 5.0),
-                    Container(
-                      padding: EdgeInsets.only(left: 10.0),
-                      margin: EdgeInsets.only(right: 20.0),
-                      decoration: BoxDecoration(
-                        color: Color(0xffececf8),
-                        borderRadius: BorderRadius.circular(10),
+                      SizedBox(height: 20.0),
+                      Text(
+                        "Add Location",
+                        style: AppWidget.HeadLineTextFieldStyle(22.0),
                       ),
-                      child: TextField(
-                        decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintText: "Enter fropoff Location",
-                        ),
+                      SizedBox(height: 20.0),
+                      Text(
+                        "Pick Up",
+                        style: AppWidget.NormalLineTextFieldStyle(18.0),
                       ),
-                    ),
-                    SizedBox(height: 30.0),
-                    Center(
-                      child: Container(
-                        height: 60,
-                        width: MediaQuery.of(context).size.width / 1.9,
+                      SizedBox(height: 5.0),
+                      Container(
+                        padding: EdgeInsets.only(left: 10.0),
+                        margin: EdgeInsets.only(right: 20.0),
                         decoration: BoxDecoration(
-                          color: Color(0xff6053f8),
+                          color: Color(0xffececf8),
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        child: Center(
-                          child: Text(
-                            "Submit Location",
-                            style: AppWidget.WhiteTextFieldStyle(19.0),
+                        child: TextField(
+                          decoration: InputDecoration(
+                            border: InputBorder.none,
+                            hintText: "Enter Pickup Location",
                           ),
                         ),
                       ),
-                    ),
-                    SizedBox(height: 40.0),
-                    Container(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "PickUp Details",
-                            style: AppWidget.NormalLineTextFieldStyle(24.0),
-                          ),
-                          SizedBox(height: 10.0),
-                          Row(
-                            children: [
-                              Icon(
-                                Icons.location_on_rounded,
-                                color: Color(0xff6053f8),
-                                size: 30.0,
-                              ),
-                              SizedBox(width: 10.0),
-                              Expanded(
-                                child: TextField(
-                                  decoration: InputDecoration(
-                                    hintText: "Enter PickUp Address",
-                                    enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Colors.black26,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Icon(
-                                Icons.person_2_rounded,
-                                color: Color(0xff6053f8),
-                                size: 30.0,
-                              ),
-                              SizedBox(width: 10.0),
-                              Expanded(
-                                child: TextField(
-                                  decoration: InputDecoration(
-                                    hintText: "Enter PickUp Address",
-                                    enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Colors.black26,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Icon(
-                                Icons.phone_android_rounded,
-                                color: Color(0xff6053f8),
-                                size: 30.0,
-                              ),
-                              SizedBox(width: 10.0),
-                              Expanded(
-                                child: TextField(
-                                  decoration: InputDecoration(
-                                    hintText: "Enter Phone Number",
-                                    enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Colors.black26,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
+                      SizedBox(height: 20.0),
+                      Text(
+                        "Drop Off",
+                        style: AppWidget.NormalLineTextFieldStyle(18.0),
                       ),
-                    ),
-                  ],
+                      SizedBox(height: 5.0),
+                      Container(
+                        padding: EdgeInsets.only(left: 10.0),
+                        margin: EdgeInsets.only(right: 20.0),
+                        decoration: BoxDecoration(
+                          color: Color(0xffececf8),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: TextField(
+                          decoration: InputDecoration(
+                            border: InputBorder.none,
+                            hintText: "Enter fropoff Location",
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 30.0),
+                      Center(
+                        child: Container(
+                          height: 60,
+                          width: MediaQuery.of(context).size.width / 1.9,
+                          decoration: BoxDecoration(
+                            color: Color(0xff6053f8),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Center(
+                            child: Text(
+                              "Submit Location",
+                              style: AppWidget.WhiteTextFieldStyle(19.0),
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 40.0),
+                      Container(
+                        margin: EdgeInsets.only(right: 20.0),
+                        padding: EdgeInsets.all(20),
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.black45, width: 2.0),
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "PickUp Details",
+                              style: AppWidget.NormalLineTextFieldStyle(24.0),
+                            ),
+                            SizedBox(height: 10.0),
+                            Row(
+                              children: [
+                                Icon(
+                                  Icons.location_on_rounded,
+                                  color: Color(0xff6053f8),
+                                  size: 30.0,
+                                ),
+                                SizedBox(width: 10.0),
+                                Expanded(
+                                  child: TextField(
+                                    decoration: InputDecoration(
+                                      hintText: "Enter PickUp Address",
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Colors.black26,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Icon(
+                                  Icons.person_2_rounded,
+                                  color: Color(0xff6053f8),
+                                  size: 30.0,
+                                ),
+                                SizedBox(width: 10.0),
+                                Expanded(
+                                  child: TextField(
+                                    decoration: InputDecoration(
+                                      hintText: "Enter User Name",
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Colors.black26,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Icon(
+                                  Icons.phone_android_rounded,
+                                  color: Color(0xff6053f8),
+                                  size: 30.0,
+                                ),
+                                SizedBox(width: 10.0),
+                                Expanded(
+                                  child: TextField(
+                                    decoration: InputDecoration(
+                                      hintText: "Enter Phone Number",
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Colors.black26,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 40.0),
+                      Container(
+                        margin: EdgeInsets.only(right: 20.0),
+                        padding: EdgeInsets.all(20),
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.black45, width: 2.0),
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Drop-off Details",
+                              style: AppWidget.NormalLineTextFieldStyle(24.0),
+                            ),
+                            SizedBox(height: 10.0),
+                            Row(
+                              children: [
+                                Icon(
+                                  Icons.location_on_rounded,
+                                  color: Color(0xff6053f8),
+                                  size: 30.0,
+                                ),
+                                SizedBox(width: 10.0),
+                                Expanded(
+                                  child: TextField(
+                                    decoration: InputDecoration(
+                                      hintText: "Enter Drop-off Address",
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Colors.black26,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Icon(
+                                  Icons.person_2_rounded,
+                                  color: Color(0xff6053f8),
+                                  size: 30.0,
+                                ),
+                                SizedBox(width: 10.0),
+                                Expanded(
+                                  child: TextField(
+                                    decoration: InputDecoration(
+                                      hintText: "Enter User Name",
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Colors.black26,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Icon(
+                                  Icons.phone_android_rounded,
+                                  color: Color(0xff6053f8),
+                                  size: 30.0,
+                                ),
+                                SizedBox(width: 10.0),
+                                Expanded(
+                                  child: TextField(
+                                    decoration: InputDecoration(
+                                      hintText: "Enter Phone Number",
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Colors.black26,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 30.0),
+                      Container(
+                        width: MediaQuery.of(context).size.width,
+                        decoration: BoxDecoration(border: Border.all()),
+                        child: Row(
+                          children: [
+                            Column(
+                              children: [
+                                Text(
+                                  "Total Price",
+                                  style: AppWidget.SimpleTextFieldStyle(),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
