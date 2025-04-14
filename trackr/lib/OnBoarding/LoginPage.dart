@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:trackr/OnBoarding/SignupPage.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -157,9 +158,21 @@ class _LoginPageState extends State<LoginPage> {
                   "Don't have an account?",
                   style: TextStyle(fontSize: 23.0, fontWeight: FontWeight.w500),
                 ),
-                Text(
-                  " Sign Up",
-                  style: TextStyle(fontSize: 23.0, fontWeight: FontWeight.bold),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => SignupPage()),
+                    );
+                  },
+                  child: Text(
+                    " Sign Up",
+                    style: TextStyle(
+                      fontSize: 23.0,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black, // Optional: give it a clickable look
+                    ),
+                  ),
                 ),
               ],
             ),

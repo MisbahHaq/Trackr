@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:trackr/OnBoarding/LoginPage.dart';
 
 class SignupPage extends StatefulWidget {
   const SignupPage({super.key});
@@ -94,7 +95,7 @@ class _SignupPageState extends State<SignupPage> {
             Padding(
               padding: EdgeInsets.only(left: 30.0, right: 30.0),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
                     "Sign Up",
@@ -134,12 +135,46 @@ class _SignupPageState extends State<SignupPage> {
                       borderRadius: BorderRadius.circular(60),
                       child: Container(
                         padding: EdgeInsets.all(15),
-                        decoration: BoxDecoration(color: Color(0xff3a608d)),
+                        decoration: BoxDecoration(
+                          color: Color(0xffea6d35),
+                          borderRadius: BorderRadius.circular(60),
+                        ),
+                        child: Icon(
+                          Icons.arrow_forward_rounded,
+                          color: Colors.white,
+                          size: 36.0,
+                        ),
                       ),
                     ),
                   ),
                 ],
               ),
+            ),
+            SizedBox(height: 30.0),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "Already have an account?",
+                  style: TextStyle(fontSize: 23.0, fontWeight: FontWeight.w500),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => LoginPage()),
+                    );
+                  },
+                  child: Text(
+                    " Sign in",
+                    style: TextStyle(
+                      fontSize: 23.0,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black, // Optional: give it a clickable look
+                    ),
+                  ),
+                ),
+              ],
             ),
           ],
         ),
