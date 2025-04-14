@@ -90,6 +90,57 @@ class _SignupPageState extends State<SignupPage> {
                 ),
               ),
             ),
+            SizedBox(height: 40.0),
+            Padding(
+              padding: EdgeInsets.only(left: 30.0, right: 30.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Text(
+                    "Sign Up",
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 32.0,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      if (passwordcontroller.text != "" &&
+                          emailcontroller.text != "" &&
+                          namecontroller.text != "") {
+                        setState(() {
+                          email = emailcontroller.text.trim();
+                          password = passwordcontroller.text.trim();
+                        });
+                        registration();
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            backgroundColor: Colors.red,
+                            content: Text(
+                              "Please Fill Complete Details",
+                              style: TextStyle(
+                                fontSize: 20.0,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        );
+                      }
+                    },
+                    child: Material(
+                      elevation: 5.0,
+                      borderRadius: BorderRadius.circular(60),
+                      child: Container(
+                        padding: EdgeInsets.all(15),
+                        decoration: BoxDecoration(color: Color(0xff3a608d)),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
