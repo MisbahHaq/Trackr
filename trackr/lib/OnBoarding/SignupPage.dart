@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:random_string/random_string.dart';
 import 'package:trackr/OnBoarding/LoginPage.dart';
+import 'package:trackr/Services/BottomNavbar.dart';
 import 'package:trackr/Services/Database.dart';
 import 'package:trackr/Services/Shared_Prefs.dart';
 import 'package:trackr/Services/Widget_Support.dart';
@@ -14,13 +15,19 @@ class SignupPage extends StatefulWidget {
 }
 
 class _SignupPageState extends State<SignupPage> {
-  TextEditingController namecontroller = new TextEditingController();
-  TextEditingController emailcontroller = new TextEditingController();
-  TextEditingController passwordcontroller = new TextEditingController();
+  TextEditingController namecontroller = TextEditingController();
+  TextEditingController emailcontroller = TextEditingController();
+  TextEditingController passwordcontroller = TextEditingController();
 
   String? name, email, password;
 
+  bool _isLoading = false;
+
   registration() async {
+    setState(() {
+      _isLoading = true;
+    });
+
     if (passwordcontroller.text != "" &&
         emailcontroller.text != "" &&
         namecontroller.text != "") {
@@ -31,12 +38,14 @@ class _SignupPageState extends State<SignupPage> {
         await SharedPreferenceHelper().saveUserId(id);
         await SharedPreferenceHelper().saveUserName(namecontroller.text);
         await SharedPreferenceHelper().saveUserEmail(emailcontroller.text);
+
         Map<String, dynamic> userInfoMap = {
           "Name": namecontroller.text,
           "Email": emailcontroller.text,
           "Id": id,
         };
         await DatabaseMethods().addUserDetail(userInfoMap, id);
+
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             backgroundColor: Colors.green,
@@ -46,28 +55,32 @@ class _SignupPageState extends State<SignupPage> {
             ),
           ),
         );
+
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => Bottom()),
+        );
       } on FirebaseAuthException catch (e) {
+        String errorMsg = "An error occurred";
         if (e.code == "weak-password") {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              backgroundColor: Colors.red,
-              content: Text(
-                "Password Provided is too weak",
-                style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
-              ),
-            ),
-          );
+          errorMsg = "Password Provided is too weak";
         } else if (e.code == 'email-already-in-use') {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              backgroundColor: Colors.red,
-              content: Text(
-                "Account Already Exists",
-                style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
-              ),
-            ),
-          );
+          errorMsg = "Account Already Exists";
         }
+
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            backgroundColor: Colors.red,
+            content: Text(
+              errorMsg,
+              style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+            ),
+          ),
+        );
+      } finally {
+        setState(() {
+          _isLoading = false;
+        });
       }
     }
   }
@@ -76,13 +89,14 @@ class _SignupPageState extends State<SignupPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xffefeeed),
-      body: Container(
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
         child: Column(
           children: [
             Image.asset("images/login.png"),
             SizedBox(height: 30.0),
             Padding(
-              padding: EdgeInsets.only(left: 40.0, right: 40.0),
+              padding: EdgeInsets.symmetric(horizontal: 40.0),
               child: TextField(
                 controller: namecontroller,
                 decoration: InputDecoration(
@@ -93,7 +107,7 @@ class _SignupPageState extends State<SignupPage> {
             ),
             SizedBox(height: 30.0),
             Padding(
-              padding: EdgeInsets.only(left: 40.0, right: 40.0),
+              padding: EdgeInsets.symmetric(horizontal: 40.0),
               child: TextField(
                 controller: emailcontroller,
                 decoration: InputDecoration(
@@ -104,7 +118,7 @@ class _SignupPageState extends State<SignupPage> {
             ),
             SizedBox(height: 30.0),
             Padding(
-              padding: EdgeInsets.only(left: 40.0, right: 40.0),
+              padding: EdgeInsets.symmetric(horizontal: 40.0),
               child: TextField(
                 obscureText: true,
                 controller: passwordcontroller,
@@ -116,7 +130,7 @@ class _SignupPageState extends State<SignupPage> {
             ),
             SizedBox(height: 40.0),
             Padding(
-              padding: EdgeInsets.only(left: 30.0, right: 30.0),
+              padding: EdgeInsets.symmetric(horizontal: 30.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -157,15 +171,24 @@ class _SignupPageState extends State<SignupPage> {
                       elevation: 5.0,
                       borderRadius: BorderRadius.circular(60),
                       child: Container(
-                        padding: EdgeInsets.all(15),
+                        height: 60,
+                        width: 60,
                         decoration: BoxDecoration(
                           color: Color(0xff3a608d),
                           borderRadius: BorderRadius.circular(60),
                         ),
-                        child: Icon(
-                          Icons.arrow_forward_rounded,
-                          color: Colors.white,
-                          size: 36.0,
+                        child: Center(
+                          child:
+                              _isLoading
+                                  ? CircularProgressIndicator(
+                                    color: Colors.white,
+                                    strokeWidth: 3.0,
+                                  )
+                                  : Icon(
+                                    Icons.arrow_forward_rounded,
+                                    color: Colors.white,
+                                    size: 36.0,
+                                  ),
                         ),
                       ),
                     ),
@@ -193,7 +216,7 @@ class _SignupPageState extends State<SignupPage> {
                     style: TextStyle(
                       fontSize: 23.0,
                       fontWeight: FontWeight.bold,
-                      color: Colors.black, // Optional: give it a clickable look
+                      color: Colors.black,
                     ),
                   ),
                 ),
