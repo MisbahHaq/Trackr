@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1034656839222",
+    "project_id": "trackr-7722d",
+    "storage_bucket": "trackr-7722d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1034656839222:android:ad851a804c404044b30a97",
+        "android_client_info": {
+          "package_name": "com.example.trackr"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCGh_axIEtYQ5Ql7ESpiJA8_mNfVxJHHr4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
