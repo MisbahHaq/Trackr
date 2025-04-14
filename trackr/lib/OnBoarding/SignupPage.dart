@@ -136,7 +136,7 @@ class _SignupPageState extends State<SignupPage> {
                       child: Container(
                         padding: EdgeInsets.all(15),
                         decoration: BoxDecoration(
-                          color: Color(0xffea6d35),
+                          color: Color(0xff3a608d),
                           borderRadius: BorderRadius.circular(60),
                         ),
                         child: Icon(
