@@ -309,7 +309,18 @@ class _PostPageState extends State<PostPage> {
                                 ),
                               ],
                             ),
-                            Container(width: 200, decoration: BoxDecoration()),
+                            Container(
+                              width: 200,
+                              decoration: BoxDecoration(
+                                color: Color(0xff6053f8),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  "Place Order",
+                                  style: AppWidget.WhiteTextFieldStyle(20.0),
+                                ),
+                              ),
+                            ),
                           ],
                         ),
                       ),
