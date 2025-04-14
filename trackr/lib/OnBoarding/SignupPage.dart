@@ -50,6 +50,49 @@ class _SignupPageState extends State<SignupPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      backgroundColor: Color(0xffefeeed),
+      body: Container(
+        child: Column(
+          children: [
+            Image.asset("images/login.png"),
+            SizedBox(height: 30.0),
+            Padding(
+              padding: EdgeInsets.only(left: 40.0, right: 40.0),
+              child: TextField(
+                controller: namecontroller,
+                decoration: InputDecoration(
+                  hintText: "Name",
+                  hintStyle: TextStyle(color: Colors.black54, fontSize: 23.0),
+                ),
+              ),
+            ),
+            SizedBox(height: 30.0),
+            Padding(
+              padding: EdgeInsets.only(left: 40.0, right: 40.0),
+              child: TextField(
+                controller: emailcontroller,
+                decoration: InputDecoration(
+                  hintText: "Email",
+                  hintStyle: TextStyle(color: Colors.black54, fontSize: 23.0),
+                ),
+              ),
+            ),
+            SizedBox(height: 30.0),
+            Padding(
+              padding: EdgeInsets.only(left: 40.0, right: 40.0),
+              child: TextField(
+                obscureText: true,
+                controller: passwordcontroller,
+                decoration: InputDecoration(
+                  hintText: "Password",
+                  hintStyle: TextStyle(color: Colors.black54, fontSize: 23.0),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
