@@ -4,7 +4,7 @@ import 'package:trackr/OnBoarding/LoginPage.dart';
 import 'package:trackr/OnBoarding/SignupPage.dart';
 import 'package:trackr/Pages/HomePage.dart';
 import 'package:trackr/OnBoarding/OnBoardingPage.dart';
-import 'package:trackr/Pages/Post.dart';
+import 'package:trackr/Pages/PostPage.dart';
 import 'package:trackr/Services/BottomNavbar.dart';
 
 void main() async {

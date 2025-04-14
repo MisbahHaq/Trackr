@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:trackr/Pages/HomePage.dart';
 import 'package:trackr/Pages/OrderPage.dart';
-import 'package:trackr/Pages/Post.dart';
+import 'package:trackr/Pages/PostPage.dart';
 import 'package:trackr/Pages/ProfilePage.dart';
 
 class Bottom extends StatefulWidget {
@@ -36,7 +36,7 @@ class _BottomState extends State<Bottom> {
     return Scaffold(
       bottomNavigationBar: CurvedNavigationBar(
         height: 70,
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.transparent,
         color: Colors.black,
         animationDuration: Duration(milliseconds: 300),
         onTap: (int index) {
