@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:trackr/Pages/HomePage.dart';
+import 'package:trackr/Pages/OrderPage.dart';
+import 'package:trackr/Pages/Post.dart';
+import 'package:trackr/Pages/ProfilePage.dart';
 
 class Bottom extends StatefulWidget {
   @override
@@ -10,45 +13,45 @@ class Bottom extends StatefulWidget {
 class _BottomState extends State<Bottom> {
   late List<Widget> pages;
 
-  late Home HomePage;
-  late Order order;
-  late Profile profilePage;
+  late HomePage homePage;
+  late OrderPage order;
+  late ProfilePage profilePage;
   late PostPage postPage;
 
   int currentTabIndex = 0;
 
   @override
   void initState() {
-    HomePage = HomePage();
+    homePage = HomePage();
     order = OrderPage();
     postPage = PostPage();
     profilePage = ProfilePage();
 
-    pages = [HomePage, postPage, order, profilePage];
+    pages = [homePage, postPage, order, profilePage];
     super.initState();
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blueAccent,
       bottomNavigationBar: CurvedNavigationBar(
-        backgroundColor: Colors.transparent,
-        color: Colors.white,
-        buttonBackgroundColor: Colors.orangeAccent,
-        height: 60,
+        height: 70,
+        backgroundColor: Colors.white,
+        color: Colors.black,
         animationDuration: Duration(milliseconds: 300),
-        items: <Widget>[
-          Icon(Icons.home, size: 30),
-          Icon(Icons.search, size: 30),
-          Icon(Icons.person, size: 30),
-        ],
-        onTap: (index) {
+        onTap: (int index) {
           setState(() {
-            _page = index;
+            currentTabIndex = index;
           });
         },
+        items: [
+          Icon(Icons.home, color: Colors.white, size: 34.0),
+          Icon(Icons.post_add, color: Colors.white, size: 34.0),
+          Icon(Icons.shopping_bag, color: Colors.white, size: 34.0),
+          Icon(Icons.person, color: Colors.white, size: 34.0),
+        ],
       ),
-      body: screens[_page],
+      body: pages[currentTabIndex],
     );
   }
 }
