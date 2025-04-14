@@ -282,10 +282,17 @@ class _PostPageState extends State<PostPage> {
                       ),
                       SizedBox(height: 30.0),
                       Container(
-                        padding: EdgeInsets.only(left: 10.0),
+                        padding: EdgeInsets.only(
+                          left: 30.0,
+                          top: 10.0,
+                          bottom: 10.0,
+                        ),
                         margin: EdgeInsets.only(right: 20.0),
                         width: MediaQuery.of(context).size.width,
-                        decoration: BoxDecoration(border: Border.all()),
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.black45, width: 2.0),
+                          borderRadius: BorderRadius.circular(20),
+                        ),
                         child: Row(
                           children: [
                             Column(
@@ -296,8 +303,13 @@ class _PostPageState extends State<PostPage> {
                                     18.0,
                                   ),
                                 ),
+                                Text(
+                                  "\$80",
+                                  style: AppWidget.HeadLineTextFieldStyle(28.0),
+                                ),
                               ],
                             ),
+                            Container(width: 200, decoration: BoxDecoration()),
                           ],
                         ),
                       ),
