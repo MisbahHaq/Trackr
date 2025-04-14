@@ -282,6 +282,8 @@ class _PostPageState extends State<PostPage> {
                       ),
                       SizedBox(height: 30.0),
                       Container(
+                        padding: EdgeInsets.only(left: 10.0),
+                        margin: EdgeInsets.only(right: 20.0),
                         width: MediaQuery.of(context).size.width,
                         decoration: BoxDecoration(border: Border.all()),
                         child: Row(
@@ -290,13 +292,16 @@ class _PostPageState extends State<PostPage> {
                               children: [
                                 Text(
                                   "Total Price",
-                                  style: AppWidget.SimpleTextFieldStyle(),
+                                  style: AppWidget.NormalLineTextFieldStyle(
+                                    18.0,
+                                  ),
                                 ),
                               ],
                             ),
                           ],
                         ),
                       ),
+                      SizedBox(height: 80.0),
                     ],
                   ),
                 ),
