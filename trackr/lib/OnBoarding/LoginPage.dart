@@ -25,7 +25,17 @@ class _LoginPageState extends State<LoginPage> {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             backgroundColor: Colors.red,
-            content: Text("No User found for that Email"),
+            content: Text(
+              "No User found for that Email",
+              style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+            ),
+          ),
+        );
+      } else if (e.code == 'wrong-password') {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            backgroundColor: Colors.red,
+            content: Text("Wrong Password Provided by User"),
           ),
         );
       }
@@ -34,6 +44,39 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      backgroundColor: Color(0xffefeeed),
+      body: Container(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Image.asset("images/signin.png"),
+            SizedBox(height: 30.0),
+            Padding(
+              padding: EdgeInsets.only(left: 40.0, right: 40.0),
+              child: TextField(
+                controller: emailController,
+                decoration: InputDecoration(
+                  hintText: "Email",
+                  hintStyle: TextStyle(color: Colors.black54, fontSize: 23.0),
+                ),
+              ),
+            ),
+            SizedBox(height: 40.0),
+            Padding(
+              padding: EdgeInsets.only(left: 40.0, right: 40.0),
+              child: TextField(
+                obscureText: true,
+                controller: passwordController,
+                decoration: InputDecoration(
+                  hintText: "Password",
+                  hintStyle: TextStyle(color: Colors.black54, fontSize: 23.0),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
