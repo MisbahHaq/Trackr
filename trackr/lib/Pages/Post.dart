@@ -309,10 +309,13 @@ class _PostPageState extends State<PostPage> {
                                 ),
                               ],
                             ),
+                            SizedBox(width: 50.0),
                             Container(
+                              height: 60,
                               width: 200,
                               decoration: BoxDecoration(
                                 color: Color(0xff6053f8),
+                                borderRadius: BorderRadius.circular(20),
                               ),
                               child: Center(
                                 child: Text(
