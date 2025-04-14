@@ -1,6 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:random_string/random_string.dart';
 import 'package:trackr/OnBoarding/LoginPage.dart';
+import 'package:trackr/Services/Database.dart';
+import 'package:trackr/Services/Shared_Prefs.dart';
+import 'package:trackr/Services/Widget_Support.dart';
 
 class SignupPage extends StatefulWidget {
   const SignupPage({super.key});
@@ -23,6 +27,25 @@ class _SignupPageState extends State<SignupPage> {
       try {
         UserCredential userCredential = await FirebaseAuth.instance
             .createUserWithEmailAndPassword(email: email!, password: password!);
+        String id = randomAlphaNumeric(10);
+        await SharedPreferenceHelper().saveUserId(id);
+        await SharedPreferenceHelper().saveUserName(namecontroller.text);
+        await SharedPreferenceHelper().saveUserEmail(emailcontroller.text);
+        Map<String, dynamic> userInfoMap = {
+          "Name": namecontroller.text,
+          "Email": emailcontroller.text,
+          "Id": id,
+        };
+        await DatabaseMethods().addUserDetail(userInfoMap, id);
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            backgroundColor: Colors.green,
+            content: Text(
+              "Registered Successfully!",
+              style: AppWidget.WhiteTextFieldStyle(20.0),
+            ),
+          ),
+        );
       } on FirebaseAuthException catch (e) {
         if (e.code == "weak-password") {
           ScaffoldMessenger.of(context).showSnackBar(
