@@ -44,6 +44,7 @@ dependencies:
   flutter_dotenv: ^5.2.1
   razorpay_flutter: ^1.4.0
   flutter_stripe: ^11.5.0
+  dio: ^5.8.0+1
 
 dev_dependencies:
   flutter_test:
