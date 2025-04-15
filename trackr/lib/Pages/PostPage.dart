@@ -15,6 +15,7 @@ class _PostPageState extends State<PostPage> {
 
   double? distance;
   double? price;
+  bool isLoading = false;
 
   final String apiKey = 'pk.c794a602d96c919a87d22dfc7800f410'; // Replace this
 
@@ -24,6 +25,8 @@ class _PostPageState extends State<PostPage> {
 
     if (pickup.isEmpty || dropoff.isEmpty) return;
 
+    setState(() => isLoading = true);
+
     try {
       final pickupCoord = await getCoordinates(pickup);
       final dropoffCoord = await getCoordinates(dropoff);
@@ -32,9 +35,6 @@ class _PostPageState extends State<PostPage> {
         print('Error: Unable to fetch coordinates');
         return;
       }
-
-      print('Pickup Coordinates: $pickupCoord');
-      print('Dropoff Coordinates: $dropoffCoord');
 
       final distanceInMeters = await getDistance(pickupCoord, dropoffCoord);
       final distanceInKm = distanceInMeters / 1000;
@@ -46,6 +46,8 @@ class _PostPageState extends State<PostPage> {
       });
     } catch (e) {
       print('Error: $e');
+    } finally {
+      setState(() => isLoading = false);
     }
   }
 
@@ -165,7 +167,7 @@ class _PostPageState extends State<PostPage> {
                       const SizedBox(height: 30.0),
                       Center(
                         child: GestureDetector(
-                          onTap: calculateDistanceAndPrice,
+                          onTap: isLoading ? null : calculateDistanceAndPrice,
                           child: Container(
                             height: 60,
                             width: MediaQuery.of(context).size.width / 1.9,
@@ -173,14 +175,21 @@ class _PostPageState extends State<PostPage> {
                               color: const Color(0xff6053f8),
                               borderRadius: BorderRadius.circular(10),
                             ),
-                            child: const Center(
-                              child: Text(
-                                "Submit Location",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 19.0,
-                                ),
-                              ),
+                            child: Center(
+                              child:
+                                  isLoading
+                                      ? const CircularProgressIndicator(
+                                        valueColor: AlwaysStoppedAnimation(
+                                          Colors.white,
+                                        ),
+                                      )
+                                      : const Text(
+                                        "Submit Location",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 19.0,
+                                        ),
+                                      ),
                             ),
                           ),
                         ),
