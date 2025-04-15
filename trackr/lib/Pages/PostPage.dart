@@ -16,6 +16,8 @@ class _PostPageState extends State<PostPage> {
   double? distance;
   double? price;
 
+  final String apiKey = 'pk.c794a602d96c919a87d22dfc7800f410'; // Replace this
+
   Future<void> calculateDistanceAndPrice() async {
     final pickup = pickupController.text;
     final dropoff = dropoffController.text;
@@ -48,48 +50,36 @@ class _PostPageState extends State<PostPage> {
   }
 
   Future<List<double>?> getCoordinates(String location) async {
-    final apiKey = 'AIzaSyBj33amCtO65Hl1a2wnbw_y25IY-Rodl7s';
     final url =
-        'https://maps.googleapis.com/maps/api/geocode/json?address=$location&key=$apiKey';
+        'https://us1.locationiq.com/v1/search.php?key=$apiKey&q=$location&format=json';
 
     final response = await http.get(Uri.parse(url));
 
-    print('API Response: ${response.body}'); // Debugging response
-
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
-      final results = data['results'];
-      if (results != null && results.isNotEmpty) {
-        final location = results[0]['geometry']['location'];
-        return [location['lng'], location['lat']];
+      if (data != null && data.isNotEmpty) {
+        final lat = double.parse(data[0]['lat']);
+        final lon = double.parse(data[0]['lon']);
+        return [lon, lat];
       }
-    } else {
-      print('Failed to fetch coordinates for $location');
     }
     return null;
   }
 
   Future<double> getDistance(List<double> start, List<double> end) async {
-    final apiKey = 'AIzaSyBj33amCtO65Hl1a2wnbw_y25IY-Rodl7s';
     final url =
-        'https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins=${start[1]},${start[0]}&destinations=${end[1]},${end[0]}&key=$apiKey';
+        'https://us1.locationiq.com/v1/directions/driving/${start[0]},${start[1]};${end[0]},${end[1]}?key=$apiKey&overview=false';
 
     final response = await http.get(Uri.parse(url));
 
-    print('Distance API Response: ${response.body}'); // Debugging response
-
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
-      final rows = data['rows'];
-      if (rows != null && rows.isNotEmpty) {
-        final elements = rows[0]['elements'];
-        if (elements != null && elements.isNotEmpty) {
-          return elements[0]['distance']['value']
-              .toDouble(); // Distance in meters
-        }
-      }
+      final distanceMeters =
+          data['routes'][0]['distance'].toDouble(); // in meters
+      return distanceMeters;
+    } else {
+      throw Exception('Failed to get distance');
     }
-    throw Exception('Failed to get distance');
   }
 
   @override
@@ -100,7 +90,7 @@ class _PostPageState extends State<PostPage> {
         margin: const EdgeInsets.only(top: 50.0),
         child: Column(
           children: [
-            Center(
+            const Center(
               child: Text(
                 "Add Package",
                 style: TextStyle(color: Colors.white, fontSize: 25.0),
@@ -132,9 +122,12 @@ class _PostPageState extends State<PostPage> {
                         ),
                       ),
                       const SizedBox(height: 20.0),
-                      Text("Add Location", style: TextStyle(fontSize: 22.0)),
+                      const Text(
+                        "Add Location",
+                        style: TextStyle(fontSize: 22.0),
+                      ),
                       const SizedBox(height: 20.0),
-                      Text("Pick Up", style: TextStyle(fontSize: 18.0)),
+                      const Text("Pick Up", style: TextStyle(fontSize: 18.0)),
                       const SizedBox(height: 5.0),
                       Container(
                         padding: const EdgeInsets.only(left: 10.0),
@@ -152,7 +145,7 @@ class _PostPageState extends State<PostPage> {
                         ),
                       ),
                       const SizedBox(height: 20.0),
-                      Text("Drop Off", style: TextStyle(fontSize: 18.0)),
+                      const Text("Drop Off", style: TextStyle(fontSize: 18.0)),
                       const SizedBox(height: 5.0),
                       Container(
                         padding: const EdgeInsets.only(left: 10.0),
@@ -180,7 +173,7 @@ class _PostPageState extends State<PostPage> {
                               color: const Color(0xff6053f8),
                               borderRadius: BorderRadius.circular(10),
                             ),
-                            child: Center(
+                            child: const Center(
                               child: Text(
                                 "Submit Location",
                                 style: TextStyle(
@@ -210,13 +203,13 @@ class _PostPageState extends State<PostPage> {
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
+                                const Text(
                                   "Total Price",
                                   style: TextStyle(fontSize: 18.0),
                                 ),
                                 Text(
                                   price != null ? "₹$price" : "₹0",
-                                  style: TextStyle(fontSize: 28.0),
+                                  style: const TextStyle(fontSize: 28.0),
                                 ),
                                 if (distance != null)
                                   Text(
@@ -236,7 +229,7 @@ class _PostPageState extends State<PostPage> {
                                 color: const Color(0xff6053f8),
                                 borderRadius: BorderRadius.circular(20),
                               ),
-                              child: Center(
+                              child: const Center(
                                 child: Text(
                                   "Place Order",
                                   style: TextStyle(
