@@ -10,13 +10,13 @@ class StripeService {
 
   Future<void> makePayment(int amount) async {
     try {
-      final clientSecret = await _createPaymentIntent(amount, 'pkr');
+      final clientSecret = await _createPaymentIntent(amount, 'usd');
       if (clientSecret == null) return;
 
       await Stripe.instance.initPaymentSheet(
         paymentSheetParameters: SetupPaymentSheetParameters(
           paymentIntentClientSecret: clientSecret,
-          merchantDisplayName: 'Your App',
+          merchantDisplayName: 'Trackr',
           style: ThemeMode.light,
         ),
       );

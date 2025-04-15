@@ -22,6 +22,7 @@ class _PostPageState extends State<PostPage> {
   double? distance;
   double? price;
   bool isLoading = false;
+  bool isPlacingOrder = false;
 
   final String apiKey = 'pk.c794a602d96c919a87d22dfc7800f410';
 
@@ -90,6 +91,10 @@ class _PostPageState extends State<PostPage> {
   }
 
   Future<void> placeOrder() async {
+    setState(() {
+      isPlacingOrder = true;
+    });
+
     final pickup = pickupController.text;
     final dropoff = dropoffController.text;
     final pickupName = pickupNameController.text;
@@ -103,6 +108,10 @@ class _PostPageState extends State<PostPage> {
         dropoffName.isEmpty ||
         pickupPhone.isEmpty ||
         dropoffPhone.isEmpty) {
+      setState(() {
+        isPlacingOrder = false;
+      });
+
       ScaffoldMessenger.of(
         context,
       ).showSnackBar(const SnackBar(content: Text('Please fill all fields')));
@@ -125,12 +134,28 @@ class _PostPageState extends State<PostPage> {
       });
 
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Order Placed and Paid Successfully')),
+        const SnackBar(
+          backgroundColor: Colors.green,
+          content: Text(
+            'Order Placed and Paid Successfully',
+            style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+          ),
+        ),
       );
     } catch (e) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text('Payment Failed: $e')));
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          backgroundColor: Colors.red,
+          content: Text(
+            'Payment Failed',
+            style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+          ),
+        ),
+      );
+    } finally {
+      setState(() {
+        isPlacingOrder = false;
+      });
     }
   }
 
@@ -245,8 +270,8 @@ class _PostPageState extends State<PostPage> {
                                   style: TextStyle(fontSize: 18.0),
                                 ),
                                 Text(
-                                  price != null ? "₹$price" : "₹0",
-                                  style: const TextStyle(fontSize: 28.0),
+                                  price != null ? "\$$price" : "\$0",
+                                  style: const TextStyle(fontSize: 20.0),
                                 ),
                                 if (distance != null)
                                   Text(
@@ -283,14 +308,21 @@ class _PostPageState extends State<PostPage> {
                                   color: const Color(0xff6053f8),
                                   borderRadius: BorderRadius.circular(20),
                                 ),
-                                child: const Center(
-                                  child: Text(
-                                    "Place Order",
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 20.0,
-                                    ),
-                                  ),
+                                child: Center(
+                                  child:
+                                      isPlacingOrder
+                                          ? const CircularProgressIndicator(
+                                            valueColor: AlwaysStoppedAnimation(
+                                              Colors.white,
+                                            ),
+                                          )
+                                          : const Text(
+                                            "Place Order",
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 20.0,
+                                            ),
+                                          ),
                                 ),
                               ),
                             ),
