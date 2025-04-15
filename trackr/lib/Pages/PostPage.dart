@@ -22,8 +22,7 @@ class _PostPageState extends State<PostPage> {
   double? price;
   bool isLoading = false;
 
-  final String apiKey =
-      'pk.c794a602d96c919a87d22dfc7800f410'; // Replace with your key
+  final String apiKey = 'pk.c794a602d96c919a87d22dfc7800f410';
 
   Future<void> calculateDistanceAndPrice() async {
     final pickup = pickupController.text;
