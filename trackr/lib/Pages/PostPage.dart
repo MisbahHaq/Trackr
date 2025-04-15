@@ -39,7 +39,15 @@ class _PostPageState extends State<PostPage> {
       final dropoffCoord = await getCoordinates(dropoff);
 
       if (pickupCoord == null || dropoffCoord == null) {
-        print('Error: Unable to fetch coordinates');
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            backgroundColor: Colors.red,
+            content: Text(
+              "Invalid address.",
+              style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+            ),
+          ),
+        );
         return;
       }
 
@@ -53,6 +61,15 @@ class _PostPageState extends State<PostPage> {
       });
     } catch (e) {
       print('Error: $e');
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          backgroundColor: Colors.red,
+          content: Text(
+            "Failed to calculate distance.",
+            style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+          ),
+        ),
+      );
     } finally {
       setState(() => isLoading = false);
     }
