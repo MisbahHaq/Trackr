@@ -92,8 +92,8 @@ class _OrderPageState extends State<OrderPage> {
                             children: [
                               Image.asset(
                                 "images/parcel.png",
-                                height: 120,
-                                width: 120,
+                                height: 100,
+                                width: 100,
                                 fit: BoxFit.cover,
                               ),
                               Expanded(
@@ -164,15 +164,15 @@ class _OrderPageState extends State<OrderPage> {
     return Row(
       children: [
         Icon(
-          index <= _currentStep ? Icons.check_circle : Icons.circle_outlined,
+          index <= _currentStep ? Icons.circle : Icons.circle_outlined,
           color: index <= _currentStep ? Color(0xff6053f8) : Colors.grey,
-          size: 30.0,
+          size: 15.0,
         ),
-        SizedBox(width: 10.0),
+        SizedBox(width: 15.0),
         Expanded(
           child: Text(
             _getStatusText(index),
-            style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+            style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.w500),
           ),
         ),
       ],
