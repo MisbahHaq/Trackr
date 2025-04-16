@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:timelines_plus/timelines_plus.dart';
 import 'package:trackr/Services/Widget_Support.dart';
 
 class OrderPage extends StatefulWidget {
@@ -88,24 +89,65 @@ class _OrderPageState extends State<OrderPage> {
                               ),
                             ],
                           ),
+                          Divider(),
                           Row(
                             children: [
                               Image.asset(
                                 "images/parcel.png",
-                                height: 100,
-                                width: 100,
+                                height: 90,
+                                width: 90,
                                 fit: BoxFit.cover,
                               ),
                               Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: List.generate(5, (index) {
-                                    return _buildTimelineStep(index);
-                                  }),
+                                child: FixedTimeline.tileBuilder(
+                                  builder: TimelineTileBuilder.connected(
+                                    contentsAlign: ContentsAlign.alternating,
+                                    connectionDirection:
+                                        ConnectionDirection.before,
+                                    itemCount: 5,
+                                    contentsBuilder: (context, index) {
+                                      return Padding(
+                                        padding: EdgeInsets.only(top: 8.0),
+                                        child: Text(
+                                          _getStatusText(index),
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      );
+                                    },
+                                    indicatorBuilder: (_, index) {
+                                      if (index <= _currentStep) {
+                                        return DotIndicator(
+                                          color: Color(0xff6053f8),
+                                          child: Icon(
+                                            Icons.check,
+                                            color: Colors.white,
+                                            size: 24,
+                                          ),
+                                        );
+                                      } else {
+                                        return OutlinedDotIndicator(
+                                          borderWidth: 3,
+                                          size: 24,
+                                        );
+                                      }
+                                    },
+                                    connectorBuilder:
+                                        (_, index, ___) => SolidLineConnector(
+                                          color:
+                                              index < _currentStep
+                                                  ? Color(0xff6053f8)
+                                                  : Colors.grey,
+                                        ),
+                                  ),
                                 ),
                               ),
                             ],
                           ),
+                          SizedBox(height: 20.0),
                         ],
                       ),
                     ),
